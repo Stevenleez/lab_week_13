@@ -27,20 +27,22 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures{
+
+    buildFeatures {
         dataBinding = true
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.recyclerview)
     implementation(libs.glide)
     implementation(libs.retrofit)
@@ -48,7 +50,10 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.databinding.runtime)
+
+    // Moshi codegen pakai kapt
     kapt(libs.moshi.kotlin.codegen)
+
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -57,6 +62,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // ===== ROOM pakai dependency langsung, bukan dari libs.* =====
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // ============================================================
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
