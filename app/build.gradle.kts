@@ -70,6 +70,8 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     // ============================================================
 
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
